@@ -1,0 +1,20 @@
+# Function to find all prime numbers up to a given number using the sieve of Eratosthenes
+sieve_of_eratosthenes <- function(n) {
+  primes <- rep(TRUE, n)
+  primes[1] <- FALSE
+  p <- 2
+  while (p^2 <= n) {
+    if (primes[p]) {
+      primes[p^2:n:p] <- FALSE
+    }
+    p <- p + 1
+  }
+  return(which(primes))
+}
+
+# Get all prime numbers up to a given number
+n <- 50  # Change this to the desired number
+primes_up_to_n <- sieve_of_eratosthenes(n)
+
+# Print the prime numbers
+cat("Prime numbers up to", n, ":", primes_up_to_n, "\n")
