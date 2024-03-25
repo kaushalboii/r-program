@@ -1,0 +1,15 @@
+# Create some sample objects
+x <- 1:10
+y <- "Hello, World!"
+z <- data.frame(a = 1:5, b = letters[1:5])
+
+# List details of objects in memory
+objects_list <- objects()
+for (obj in objects_list) {
+  cat("Object Name:", obj, "\n")
+  cat("Object Type:", typeof(get(obj)), "\n")
+  cat("Object Length/Size:", length(get(obj)), "\n")
+  cat("Object Contents:\n")
+  str(get(obj))
+  cat("\n")
+}
