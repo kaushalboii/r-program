@@ -1,19 +1,25 @@
 # Function to find all prime numbers up to a given number using the sieve of Eratosthenes
 sieve_of_eratosthenes <- function(n) {
-  primes <- rep(TRUE, n)
-  primes[1] <- FALSE
+  prime <- rep(TRUE, n+1)
+  prime[1] <- FALSE
   p <- 2
   while (p^2 <= n) {
-    if (primes[p]) {
-      primes[p^2:n:p] <- FALSE
+    if (prime[p] == TRUE) {
+      for (i in p^2:n) {
+        if (i %% p == 0) {
+          prime[i] <- FALSE
+        }
+      }
     }
     p <- p + 1
   }
-  return(which(primes))
+  return(which(prime))
 }
 
-# Get all prime numbers up to a given number
-n <- 50  # Change this to the desired number
+# Get user input for the number
+n <- as.integer(readline(prompt="Enter a number: "))
+
+# Get all prime numbers up to the given number
 primes_up_to_n <- sieve_of_eratosthenes(n)
 
 # Print the prime numbers
