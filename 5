@@ -1,0 +1,19 @@
+# Function to calculate Fibonacci numbers
+fibonacci <- function(n) {
+  if (n <= 1) {
+    return(rep(1, n))
+  } else {
+    fib <- numeric(n)
+    fib[1:2] <- 1
+    for (i in 3:n) {
+      fib[i] <- fib[i - 1] + fib[i - 2]
+    }
+    return(fib)
+  }
+}
+
+# Get the first 10 Fibonacci numbers
+first_10_fib <- fibonacci(10)
+
+# Print the first 10 Fibonacci numbers
+cat("First 10 Fibonacci numbers:", first_10_fib, "\n")
